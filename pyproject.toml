@@ -1,0 +1,18 @@
+[project]
+name = "niwa_api_client"
+version = "0.1.0"
+description = "Client for NIWA's APIs"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests-mock>=1.12.1",
+    "requests>=2.32.3",
+    "typer>=0.12.5",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "fixture>=1.5.11",
+    "requests-mock>=1.12.1",
+    "requests>=2.32.3",
+]
