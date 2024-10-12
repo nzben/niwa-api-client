@@ -1,6 +1,6 @@
 from unittest.mock import patch
 import pytest
-from niwa_api_client.tideclient import TideAPIClient
+from niwa_api.tideclient import TideAPIClient
 
 @pytest.fixture
 def client():
@@ -29,6 +29,12 @@ def test_get_data_success(client):
         data = client.get_data(lat=lat, long=long)
 
         assert data == mock_response
+
+def test_get_chart_png_url(client):
+    lat = -36.8406
+    long = 174.7400
+    url = client.get_chart_png_url(lat=lat, long=long)
+    assert url == "https://api.niwa.co.nz/tides/chart.png?lat=-36.8406&long=174.74&apikey=TEST_API_KEY"
 
 def test_get_data_failure(client):
     lat = -36.8406

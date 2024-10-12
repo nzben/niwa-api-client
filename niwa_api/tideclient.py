@@ -1,7 +1,6 @@
 import requests
-from datetime import datetime
 from typing import Optional
-
+import urllib.parse
 class TideAPIClient:
     def __init__(self, api_key: str):
         self.base_url = "https://api.niwa.co.nz/tides"
@@ -25,6 +24,12 @@ class TideAPIClient:
         params = self._prepare_params(lat, long, number_of_days, start_date, datum)
         response = self._make_request("/chart.png", params)
         return response.content
+
+    def get_chart_png_url(self, lat: float, long: float, number_of_days: Optional[int] = None,
+                    start_date: Optional[str] = None, datum: Optional[str] = None) -> str:
+        params = self._prepare_params(lat, long, number_of_days, start_date, datum)
+        params['apikey'] = self.api_key
+        return f"{self.base_url}/chart.png?{urllib.parse.urlencode(params)}"
 
     def get_chart_svg(self, lat: float, long: float, number_of_days: Optional[int] = 2,
                       start_date: Optional[str] = None, datum: Optional[str] = None) -> str:

@@ -1,6 +1,6 @@
 [project]
-name = "niwa_api_client"
-version = "0.1.0"
+name = "niwa_api"
+version = "0.1.3"
 description = "Client for NIWA's APIs"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -16,3 +16,6 @@ dev-dependencies = [
     "requests-mock>=1.12.1",
     "requests>=2.32.3",
 ]
+
+[project.scripts]
+niwa-tides = "niwa_api.cli:app"

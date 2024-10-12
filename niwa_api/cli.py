@@ -1,7 +1,7 @@
 # your_package/cli.py
 
 import typer
-from niwa_api_client.tideclient import TideAPIClient
+from niwa_api.tideclient import TideAPIClient
 import os
 from typing import Optional
 
@@ -14,7 +14,7 @@ def get_tide_data(
     api_key: str = typer.Option(
         None,
         help="API key for the NIWA Tide API.",
-        envvar="NIWA_TIDE_API_KEY",
+        envvar="NIWA_API_KEY",
         prompt=True,
         hide_input=True,
     ),
